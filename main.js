@@ -22,7 +22,7 @@ const countWordsInFile = (file) => {
     };
     const words = data.split(/\W+/);
     const count = getWordsCount(words)
-    console.log(count)
+    outputCount(count)
   })
 }
 
@@ -46,6 +46,12 @@ const getWordsCount = (words) => {
   const counts = Object.values(counter);
   const sortedByCount = counts.sort((a, b) => b.count - a.count);
   return sortedByCount;
+}
+
+const outputCount = (counts) => {
+  counts.forEach(count => {
+    console.log(`${count.count} ${count.word}`)
+  })
 }
 
 const main = () => {
