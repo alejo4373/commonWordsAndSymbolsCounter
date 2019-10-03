@@ -1,5 +1,6 @@
 const fs = require('fs');
 
+// TODO: Use commander https://www.npmjs.com/package/commander to improve the CLI
 const WORDS = '-w'
 const SYMBOLS = '-s'
 
@@ -10,7 +11,15 @@ const SYMBOLS = '-s'
 
 const countWordsInFile = (file) => {
   fs.readFile(file, 'utf8', (err, data) => {
-    if (err) throw err;
+    if (err) {
+      if (err.code === "ENOENT") {
+        console.error(`[Error] File '${file}' not found.`)
+        return;
+      } else {
+        console.error(err);
+        return;
+      }
+    };
     const words = data.split(/\W+/);
     const count = getWordsCount(words)
     console.log(count)
@@ -44,6 +53,7 @@ const main = () => {
 
   if (args.length !== 2) {
     console.error('Usage: node main.js -w|-s file');
+    return;
   }
 
   const targetFile = args[1];
