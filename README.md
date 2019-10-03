@@ -10,5 +10,6 @@ I got the idea of building this as in the future I want to write JavaScript usin
   ```
 
 ## Options:
+One of:
   * `-w`: Count words
   * `-s`: Count symbols (non-alphanumeric) characters
