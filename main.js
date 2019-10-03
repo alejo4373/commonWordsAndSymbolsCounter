@@ -7,9 +7,7 @@ const SYMBOLS = '-s'
 // Write a JS program that finds the most commonly used words in your code i.e 'let', 'const', 'true'
 // and the most commonly used symbols i.e '=', '&', '$'
 
-
-
-const countWordsInFile = (file) => {
+const readFile = (file, callback) => {
   fs.readFile(file, 'utf8', (err, data) => {
     if (err) {
       if (err.code === "ENOENT") {
@@ -20,7 +18,13 @@ const countWordsInFile = (file) => {
         return;
       }
     };
-    const words = data.split(/\W+/);
+    callback(data);
+  })
+}
+
+const countWordsInFile = (file) => {
+  readFile(file, fileContent => {
+    const words = fileContent.split(/\W+/);
     const count = getWordsCount(words)
     outputCount(count)
   })
