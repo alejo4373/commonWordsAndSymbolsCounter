@@ -41,8 +41,9 @@ const getWordsCount = (words) => {
 
 const main = () => {
   const args = process.argv.slice(2)
-  if (args.length > 2) {
-    throw new Error('Too many arguments specified');
+
+  if (args.length !== 2) {
+    console.error('Usage: node main.js -w|-s file');
   }
 
   const targetFile = args[1];
