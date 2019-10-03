@@ -1,11 +1,13 @@
 const fs = require('fs');
 
 // TODO: Use commander https://www.npmjs.com/package/commander to improve the CLI
+// TODO: Add as a challenge for fellows 
+// Write a JS program that finds the most commonly used words in your code i.e 'let', 'const', 'true'
+// and the most commonly used symbols i.e '=', '&', '$'
+
 const WORDS = '-w'
 const SYMBOLS = '-s'
 
-// Write a JS program that finds the most commonly used words in your code i.e 'let', 'const', 'true'
-// and the most commonly used symbols i.e '=', '&', '$'
 
 const readFile = (file, callback) => {
   fs.readFile(file, 'utf8', (err, data) => {
