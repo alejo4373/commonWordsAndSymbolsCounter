@@ -1,4 +1,4 @@
-#! /bin/env node main.js
+#!/usr/bin/env node
 const fs = require('fs');
 
 // TODO: Use commander https://www.npmjs.com/package/commander to improve the CLI
