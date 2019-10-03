@@ -30,6 +30,14 @@ const countWordsInFile = (file) => {
   })
 }
 
+const countSymbolsInFile = (file) => {
+  readFile(file, fileContent => {
+    const symbols = fileContent.match(/\W/g)
+    const count = getWordsCount(symbols)
+    outputCount(count)
+  })
+}
+
 const getWordsCount = (words) => {
   let counter = {}
   words.forEach(word => {
@@ -54,7 +62,7 @@ const getWordsCount = (words) => {
 
 const outputCount = (counts) => {
   counts.forEach(count => {
-    console.log(`${count.count} ${count.word}`)
+    console.log(count.count, count.word)
   })
 }
 
@@ -72,6 +80,9 @@ const main = () => {
   switch (option) {
     case WORDS:
       countWordsInFile(targetFile);
+      break;
+    case SYMBOLS:
+      countSymbolsInFile(targetFile);
       break;
   }
 }
