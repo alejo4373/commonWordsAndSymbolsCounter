@@ -24,7 +24,7 @@ const readFile = (file, callback) => {
 
 const countWordsInFile = (file) => {
   readFile(file, fileContent => {
-    const words = fileContent.split(/\W+/);
+    const words = fileContent.match(/\w+/g);
     const count = getWordsCount(words)
     outputCount(count)
   })
